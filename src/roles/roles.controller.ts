@@ -16,8 +16,8 @@ export class RolesController {
 
     @ApiOperation({summary: 'Создание роли'})
     @ApiResponse({status: 200, type: Role})
-    @Roles('Super')
-    @UseGuards(RolesGuard)
+    // @Roles('Super')
+    // @UseGuards(RolesGuard)
     @UsePipes(ValidationPipe)
     @Post()
     createRole(@Body() dto: CreateRoleDto) {
@@ -26,8 +26,8 @@ export class RolesController {
 
     @ApiOperation({summary: 'Обновление роли'})
     @ApiResponse({status: 200, type: [Number]})
-    @Roles('Super')
-    @UseGuards(RolesGuard)
+    // @Roles('Super')
+    // @UseGuards(RolesGuard)
     @UsePipes(ValidationPipe)
     @Patch(':id')
     updateRole(@Param('id') id: number, @Body() dto: UpdateRoleDto) {
@@ -36,8 +36,8 @@ export class RolesController {
 
     @ApiOperation({summary: 'Удаление роли'})
     @ApiResponse({status: 200, type: Number})
-    @Roles('Super')
-    @UseGuards(RolesGuard)
+    // @Roles('Super')
+    // @UseGuards(RolesGuard)
     @Delete(':id')
     removeRole(@Param('id') id: number) {
         return this.roleService.removeRole(id);
