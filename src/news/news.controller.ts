@@ -6,6 +6,7 @@ import { NewsService } from './news.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { CreateNewsDto } from './dto/create-news.dto';
 import { UpdateNewsDto } from './dto/update-news.dto';
+import {PublicRoute} from "../decorators/public-route.decorator";
 
 @ApiBearerAuth('token')
 @ApiTags('Новости')
@@ -87,6 +88,7 @@ export class NewsController {
 
     @ApiOperation({summary: 'Получение новости'})
     @ApiResponse({status: 200, type: News})
+    @PublicRoute()
     @Get(':id')
     getOne(@Param('id') id: number) {
         return this.newsService.getOne(id);
@@ -94,6 +96,7 @@ export class NewsController {
 
     @ApiOperation({summary: 'Получение всех новостей'})
     @ApiResponse({status: 200, type: [News]})
+    @PublicRoute()
     @Get()
     getAll() {
         return this.newsService.getAll();

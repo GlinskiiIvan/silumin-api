@@ -6,6 +6,7 @@ import { FileFieldsInterceptor, FileInterceptor, FilesInterceptor } from '@nestj
 import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { ValidationPipe } from 'src/pipes/validation.pipe';
 import { Project } from './projects.model';
+import {PublicRoute} from "../decorators/public-route.decorator";
 
 @ApiTags('Проекты')
 @ApiBearerAuth('token')
@@ -46,6 +47,7 @@ export class ProjectsController {
 
     @ApiOperation({summary: 'получение проекта'})
     @ApiResponse({status: 200, type: Project})
+    @PublicRoute()
     @Get('id')
      getOne(@Param('id') id: number) {
         return this.projectService.getOne(id);
@@ -53,6 +55,7 @@ export class ProjectsController {
 
     @ApiOperation({summary: 'Получение всех проектов'})
     @ApiResponse({status: 200, type: [Project]})
+    @PublicRoute()
     @Get()
      getAll() {
         return this.projectService.getAll();

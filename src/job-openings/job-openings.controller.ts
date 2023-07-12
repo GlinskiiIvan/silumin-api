@@ -5,6 +5,7 @@ import { CreateJobOpeningDto } from './dto/create-job-openings.dto';
 import { UpdateJobOpeningDto } from './dto/update-job-openings.dto';
 import { ValidationPipe } from 'src/pipes/validation.pipe';
 import { JobOpening } from './job-openings.model';
+import {PublicRoute} from "../decorators/public-route.decorator";
 
 @ApiBearerAuth('token')
 @ApiTags('Вакансии')
@@ -39,6 +40,7 @@ export class JobOpeningsController {
     @ApiOperation({summary: 'Получение одной вкансии'})
     @ApiResponse({status: 200, type: JobOpening})
     @UsePipes(ValidationPipe)
+    @PublicRoute()
     @Get(':id')
     getOne(@Param('id') id: number) {
         return this.jobOpeningService.getOne(id);
@@ -47,6 +49,7 @@ export class JobOpeningsController {
     @ApiOperation({summary: 'Получение всех вкансий'})
     @ApiResponse({status: 200, type: [JobOpening]})
     @UsePipes(ValidationPipe)
+    @PublicRoute()
     @Get()
     getAll() {
         return this.jobOpeningService.getAll();

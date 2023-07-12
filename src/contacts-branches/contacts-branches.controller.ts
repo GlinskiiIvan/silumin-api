@@ -5,6 +5,7 @@ import { UpdateContactBrancheDto } from './dto/update-contacts-branches.dto';
 import { ContactsBranchesService } from './contacts-branches.service';
 import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { ValidationPipe } from 'src/pipes/validation.pipe';
+import {PublicRoute} from "../decorators/public-route.decorator";
 
 @ApiTags('Филиалы')
 @ApiBearerAuth('token')
@@ -37,6 +38,7 @@ export class ContactsBranchesController {
 
     @ApiOperation({summary: 'Получение филиала'})
     @ApiResponse({status: 200, type: ContactBranche})
+    @PublicRoute()
     @Get(':id')
     getOne(@Param('id') id: number) {
         return this.contactBrancheService.getOne(id);
@@ -45,6 +47,7 @@ export class ContactsBranchesController {
     
     @ApiOperation({summary: 'Получение всех филиалов'})
     @ApiResponse({status: 200, type: [ContactBranche]})
+    @PublicRoute()
     @Get()
     getAll() {
         return this.contactBrancheService.getAll();

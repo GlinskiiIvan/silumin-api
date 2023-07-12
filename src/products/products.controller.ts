@@ -6,6 +6,7 @@ import { ValidationPipe } from 'src/pipes/validation.pipe';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { FileFieldsInterceptor } from '@nestjs/platform-express';
+import {PublicRoute} from "../decorators/public-route.decorator";
 
 @ApiTags('Продукциия')
 @ApiBearerAuth('token')
@@ -46,6 +47,7 @@ export class ProductsController {
 
     @ApiOperation({summary: 'Получение продукции'})
     @ApiResponse({status: 200, type: Product})
+    @PublicRoute()
     @Get(':id')
     getOne(@Param('id') id: number) {
         return this.productService.getOne(id);
@@ -53,6 +55,7 @@ export class ProductsController {
 
     @ApiOperation({summary: 'Получение всех продукций'})
     @ApiResponse({status: 200, type: [Product]})
+    @PublicRoute()
     @Get()
     getAll() {
         return this.productService.getAll();

@@ -64,6 +64,11 @@ import {JwtAuthGuard} from "./auth/jwt-auth.guard";
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
       autoLoadModels: true,
+      // dialectOptions: {
+      //   ssl: {
+      //     require: true,
+      //   }
+      // },
       models: [
         User, 
         Role, 

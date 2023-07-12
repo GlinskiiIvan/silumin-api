@@ -5,6 +5,7 @@ import { UpdateEmployeeDto } from './dto/update-employee.dto';
 import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { ValidationPipe } from 'src/pipes/validation.pipe';
 import { Employee } from './employees.model';
+import {PublicRoute} from "../decorators/public-route.decorator";
 
 @ApiTags('Сотрудники')
 @ApiBearerAuth('token')
@@ -37,6 +38,7 @@ export class EmployeesController {
 
     @ApiOperation({summary: 'Получение сотрудника'})
     @ApiResponse({status: 200, type: Employee})
+    @PublicRoute()
     @Get(':id')
     getOne(@Param('id') id: number) {
         return this.employeeService.getOne(id);
@@ -45,6 +47,7 @@ export class EmployeesController {
     
     @ApiOperation({summary: 'Получение всех сотрудников'})
     @ApiResponse({status: 200, type: [Employee]})
+    @PublicRoute()
     @Get()
     getAll() {
         return this.employeeService.getAll();

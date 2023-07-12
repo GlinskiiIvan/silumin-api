@@ -4,6 +4,7 @@ import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagg
 import { Requirement } from './requirements.model';
 import { CreateRequirementDto } from './dto/create-requirement.dto';
 import { UpdateRequirementDto } from './dto/update-requirement.dto';
+import {PublicRoute} from "../decorators/public-route.decorator";
 
 @ApiTags('Требования')
 @ApiBearerAuth('token')
@@ -34,6 +35,7 @@ export class RequirementsController {
 
     @ApiOperation({summary: 'Получение требования'})
     @ApiResponse({status: 200, type: Requirement})
+    @PublicRoute()
     @Get(':id')
     async getOne(@Param('id') id: number) {
         return this.requirementService.getOne(id);
@@ -41,6 +43,7 @@ export class RequirementsController {
 
     @ApiOperation({summary: 'Получение требований'})
     @ApiResponse({status: 200, type: [Requirement]})
+    @PublicRoute()
     @Get()
     async getAll() {
         return this.requirementService.getAll();

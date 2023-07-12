@@ -6,6 +6,7 @@ import { UpdateEquipmentDto } from './dto/update-equipment.dto';
 import { ValidationPipe } from 'src/pipes/validation.pipe';
 import { Equipment } from './equipments.model';
 import { FileFieldsInterceptor, FileInterceptor } from '@nestjs/platform-express';
+import {PublicRoute} from "../decorators/public-route.decorator";
 
 @ApiTags('Оборудование')
 @ApiBearerAuth('token')
@@ -45,12 +46,14 @@ export class EquipmentsController {
     }
     @ApiOperation({summary: ''})
     @ApiResponse({status: 200, type: Equipment})
+    @PublicRoute()
     @Get(':id')
     getOne(@Param('id') id: number) {
         return this.equipmentService.getOne(id);
     }
     @ApiOperation({summary: ''})
     @ApiResponse({status: 200, type: [Equipment]})
+    @PublicRoute()
     @Get()
     getAll() {
         return this.equipmentService.getAll();

@@ -6,6 +6,7 @@ import { Service } from './services.model';
 import { CreateServiceDto } from './dto/create-service.dto';
 import { UpdateServiceDto } from './dto/update-service.dto';
 import { FileFieldsInterceptor } from '@nestjs/platform-express';
+import {PublicRoute} from "../decorators/public-route.decorator";
 
 @ApiTags('Услуги')
 @ApiBearerAuth('token')
@@ -46,6 +47,7 @@ export class ServicesController {
 
     @ApiOperation({summary: 'Получение услуги'})
     @ApiResponse({status: 200, type: Service})
+    @PublicRoute()
     @Get(':id')
     getOne(@Param('id') id: number) {
         return this.serviceService.getOne(id);
@@ -53,6 +55,7 @@ export class ServicesController {
 
     @ApiOperation({summary: 'Получение всех услуг'})
     @ApiResponse({status: 200, type: [Service]})
+    @PublicRoute()
     @Get()
     getAll() {
         return this.serviceService.getAll();

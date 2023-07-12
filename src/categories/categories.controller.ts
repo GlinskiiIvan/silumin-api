@@ -5,6 +5,7 @@ import { CategoriesService } from './categories.service';
 import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { ValidationPipe } from 'src/pipes/validation.pipe';
 import { Category } from './categories.model';
+import {PublicRoute} from "../decorators/public-route.decorator";
 
 @ApiTags('Категории')
 @ApiBearerAuth('token')
@@ -37,6 +38,7 @@ export class CategoriesController {
 
     @ApiOperation({summary: 'Получение категории'})
     @ApiResponse({status: 200, type: Category})
+    @PublicRoute()
     @Get(':id')
     getOne(@Param('id') id: number) {
         return this.categoryService.getOne(id);
@@ -44,6 +46,7 @@ export class CategoriesController {
 
     @ApiOperation({summary: 'Получение всех категорий'})
     @ApiResponse({status: 200, type: Category})
+    @PublicRoute()
     @Get()
     getAll() {
         return this.categoryService.getAll();

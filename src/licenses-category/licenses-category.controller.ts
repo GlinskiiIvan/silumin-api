@@ -6,6 +6,7 @@ import { UpdateLicensesCategoryDto } from './dto/update-licenses-category.dto';
 import { LicensesCategory } from './licenses-category.model';
 import { ValidationPipe } from 'src/pipes/validation.pipe';
 import { FilesInterceptor } from '@nestjs/platform-express';
+import {PublicRoute} from "../decorators/public-route.decorator";
 
 @ApiTags('Категории лицензий')
 @ApiBearerAuth('token')
@@ -70,6 +71,7 @@ export class LicensesCategoryController {
 
     @ApiOperation({summary: 'Получение одной категории лицензий'})
     @ApiResponse({status: 200, type: LicensesCategory})
+    @PublicRoute()
     @Get(':id')
     getOne(@Param('id') id: number) {
         return this.licensesCategotyService.getOne(id);
@@ -77,6 +79,7 @@ export class LicensesCategoryController {
 
     @ApiOperation({summary: 'Получение всех категорий лицензий'})
     @ApiResponse({status: 200, type: [LicensesCategory]})
+    @PublicRoute()
     @Get()
     getAll() {
         return this.licensesCategotyService.getAll();
