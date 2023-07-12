@@ -17,8 +17,8 @@ export class AuthController {
     @ApiBearerAuth('token')
     @ApiOperation({summary: 'Регистрация'})
     @ApiResponse({status: 200, type: AuthResDto})
-    // @Roles('Super')
-    // @UseGuards(RolesGuard)
+    @Roles('Super')
+    @UseGuards(RolesGuard)
     @UsePipes(ValidationPipe)
     @Post('/registration')
     registration(@Body() dto: CreateUserDto) {

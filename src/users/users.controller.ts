@@ -17,8 +17,8 @@ export class UsersController {
 
     @ApiOperation({summary: 'Создание пользователя'})
     @ApiResponse({status: 200, type: User})
-    // @Roles('Super')
-    // @UseGuards(RolesGuard)
+    @Roles('Super')
+    @UseGuards(RolesGuard)
     @UsePipes(ValidationPipe)
     @Post()
     create(@Body() userDto: CreateUserDto) {
@@ -27,8 +27,8 @@ export class UsersController {
 
     @ApiOperation({summary: 'Обновление пользователя'})
     @ApiResponse({status: 200, type: User})
-    // @Roles('Super')
-    // @UseGuards(RolesGuard)
+    @Roles('Super')
+    @UseGuards(RolesGuard)
     @UsePipes(ValidationPipe)
     @Patch(':id')
     update(@Param('id') id: number, @Body() userDto: UpdateUserDto) {
@@ -37,8 +37,8 @@ export class UsersController {
 
     @ApiOperation({summary: 'Удаление пользователя'})
     @ApiResponse({status: 200, type: Number})
-    // @Roles('Super')
-    // @UseGuards(RolesGuard)
+    @Roles('Super')
+    @UseGuards(RolesGuard)
     @Delete(':id')
     remove(@Param('id') id: number) {
         return this.userService.removeUser(id);
