@@ -22,6 +22,9 @@ export class AuthService {
     }
 
     private async validateUser(dto: CreateUserDto) {
+        console.log('dto.name', dto.name);
+        console.log('dto.password', dto.password);
+        console.log('user.password', user.password);
         const user = await this.usersService.getUserByName(dto.name);
         if(!user) throw new UnauthorizedException({message: 'Неверное имя или пароль'})
 
