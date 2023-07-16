@@ -35,7 +35,37 @@ $ npm install
 ## Running the app
 
 Перед тем как запускать сервер надо в appModule отключить авторизацию (закоментировать providers), в users.cotroller, roles.controller, auth.controller закоментировать декораторые UseGuards и Roles.
-После чего запустить сервер, создать роль Super и пользователя присвоив ему эту роль. Как пользователь будет создан положить сервер, привести всё к исходному виду(раскомментировать всё) и снова запустить.
+
+После чего запустить сервер
+```bash
+# development
+$ npm run start:dev
+```
+
+Создать роль Super
+```bash
+# http://localhost:5001/roles
+{
+	"value": "Super",
+	"description": "super admin",
+	"users": "[]"
+}
+```
+
+Создать пользователя присвоив ему роль Super
+```bash
+# https://silumin-api.onrender.com/auth/registration
+{
+	"name": "User",
+	"password": "User1!",
+	"roles": "[\"Super\"]"
+}
+```
+
+Как пользователь будет создан положить сервер, привести всё к исходному виду(раскомментировать всё) и снова запустить.
+```bash
+# development
+$ np
 
 ```bash
 # development
