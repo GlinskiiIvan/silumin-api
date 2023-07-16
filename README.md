@@ -65,15 +65,5 @@ $ npm run start:dev
 Как пользователь будет создан положить сервер, привести всё к исходному виду(раскомментировать всё) и снова запустить.
 ```bash
 # development
-$ np
-
-```bash
-# development
-$ npm run start
-
-# watch mode
 $ npm run start:dev
-
-# production mode
-$ npm run start:prod
 ```
