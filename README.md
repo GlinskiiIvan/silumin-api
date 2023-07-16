@@ -34,7 +34,8 @@ $ npm install
 
 ## Running the app
 
-Перед тем как запускать сервер надо в appModule отключить авторизацию (закоментировать providers), в users.cotroller, roles.controller, auth.controller закоментировать декораторые UseGuards и Roles
+Перед тем как запускать сервер надо в appModule отключить авторизацию (закоментировать providers), в users.cotroller, roles.controller, auth.controller закоментировать декораторые UseGuards и Roles.
+После чего запустить сервер, создать роль Super и пользователя присвоив ему эту роль. Как пользователь будет создан положить сервер, привести всё к исходному виду(раскомментировать всё) и снова запустить.
 
 ```bash
 # development
