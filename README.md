@@ -34,6 +34,8 @@ $ npm install
 
 ## Running the app
 
+Перед тем как запускать сервер надо в appModule отключить авторизацию (закоментировать providers), в users.cotroller, roles.controller, auth.controller закоментировать декораторые UseGuards и Roles
+
 ```bash
 # development
 $ npm run start
